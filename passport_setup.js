@@ -30,7 +30,7 @@ module.exports = function(passport) {
 				passReqToCallback: true
 			},
 			function(req, email, password, done) {
-				models.User.findOne({
+				return models.User.findOne({
 					where: {
 						email
 					}
@@ -39,7 +39,7 @@ module.exports = function(passport) {
 						if (user == null) {
 							req.flash('message', 'Incorrect credentials');
 							return done(null, false);
-						} else if (user.passport == null || user.passport == undefined) {
+						} else if (user.password == null || user.password == undefined) {
 							req.flash('message', 'You must reset your password');
 							return done(null, false);
 						} else if (validPassport(user, password)) {
