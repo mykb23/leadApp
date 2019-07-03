@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  include ../partials/head.pug
+  +head("Edit Lead")
+  body
+    header
+      include ../partials/navbar.pug
+      +navbar()
+      .container
+        .row
+          .col-sm-12.offset-md-2.col-md-8
+            .jumbotron
+                h2.text-center Sign Up
+                .row
+                    .col-sm-12.col-md-12
+                        form(action="/signup", method="post")
+                          div.form-group
+                            label.small.mb-1.mt-3 Email:
+                            input(placeholder="Please enter your email" type="email", name="email", value="", required=true).form-control
+                            label.small.mb-1.mt-3 Password:
+                            input(placeholder="New Password" type="password", name="password", value="", required=true).form-control
+                            button(type="submit").mt-3.btn.btn-primary Sign Up
+                            p.mt-2.mb-0
+                              | Already have an account? #[a(href="/login") Log in here].
+    include ../partials/footer.pug
+    +footer()
