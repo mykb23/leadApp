@@ -16,9 +16,13 @@ html(lang="en")
                         form(action="/signup", method="post")
                           div.form-group
                             label.small.mb-1.mt-3 Email:
-                            input(placeholder="Please enter your email" type="email", name="email", value="", required=true).form-control
+                            input(placeholder="Please enter your email" type="email", name="email", value=formData.email, required=true).form-control
+                            if (errors && errors.email)
+                              p.small.text-danger #{errors.email}
                             label.small.mb-1.mt-3 Password:
                             input(placeholder="New Password" type="password", name="password", value="", required=true).form-control
+                            if (errors && errors.password)
+                              p.small.text-danger #{errors.password}
                             button(type="submit").mt-3.btn.btn-primary Sign Up
                             p.mt-2.mb-0
                               | Already have an account? #[a(href="/login") Log in here].
